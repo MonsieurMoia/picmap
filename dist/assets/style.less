@@ -1,0 +1,522 @@
+// Fonts
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+// Icons
+@import url("{3vot}/assets/font-awesome.min.css");
+
+/*Colors*/
+
+@light: #ffffff;
+@stable:#eeeeee;
+@dark: #4b4b4b;
+@candid: #f3eac9;
+@energized: #feb626;
+@balanced: #94d267;
+@calm: #00c4d0;
+@royal: #a2469d;
+@assertive: #ff6766;
+
+//Mixins
+
+.border-radius (@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+.box-shadow (@x, @y, @blur, @alpha) {
+    -webkit-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+    -moz-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+    box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+}
+.transition (@prop: all, @time: .3s, @ease: cubic-bezier(0.215, 0.610, 0.355, 1.000)) {
+    -webkit-transition: @prop @time @ease;
+    -moz-transition: @prop @time @ease;
+    -o-transition: @prop @time @ease;
+    -ms-transition: @prop @time @ease;
+    transition: @prop @time @ease;
+}
+.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+    background-color: @start;
+    background-image: -webkit-linear-gradient(@origin, @start, @stop);
+    background-image: -moz-linear-gradient(@origin, @start, @stop);
+    background-image: -o-linear-gradient(@origin, @start, @stop);
+    background-image: -ms-linear-gradient(@origin, @start, @stop);
+    background-image: linear-gradient(@origin, @start, @stop);
+}
+.translate (@x, @y) {
+	-webkit-transform:       translate(@x, @y);
+	-moz-transform: 	 translate(@x, @y);
+	-ms-transform: 		 translate(@x, @y);
+	-o-transform: 		 translate(@x, @y);
+}
+.text-shadow(@x:1px,@alpha:20%){
+	text-shadow: @x @x @x*2 rgba(0,0,0,@alpha);
+}
+
+.padding-sm {
+	padding: .5em;
+}
+.padding-md {
+	padding: 1em;
+}
+.padding-lg {
+	padding: 1.5em;
+}
+
+.box-shadow-sm {
+	.box-shadow(0px,1px,2px,0.3)
+}
+.box-shadow-md {
+	.box-shadow(0px,1px,4px,0.4)
+}
+.box-shadow-lg {
+	.box-shadow(0px,1px,6px,0.6)
+}
+
+.bd-radius-sm{
+	.border-radius();
+}
+.bd-radius-md{
+	.border-radius(10px)
+}
+.bd-radius-lg{
+	.border-radius(15px)
+}
+
+.tx-shadow{
+	.text-shadow();
+}
+
+
+//Bootstrap Override
+.btn {
+	border: none;
+	.box-shadow-sm;
+	&.btn-default {
+		background-color: @light;
+		&:hover {
+			background-color: darken(@light, 5%);
+		}
+	}
+	&.btn-primary {
+		background-color: @calm;
+		&:hover {
+			background-color: darken(@calm, 5%);
+		}
+	}
+	&.btn-success {
+		background-color: @balanced;
+		&:hover {
+			background-color: darken(@balanced, 5%);
+		}
+	}
+	&.btn-info {
+		background-color: @royal;
+		&:hover {
+			background-color: darken(@royal, 5%);
+		}
+	}
+	&.btn-warning {
+		background-color: @energized;
+		&:hover {
+			background-color: darken(@energized, 5%);
+		}
+	}
+	&.btn-danger {
+		background-color: @assertive;
+		&:hover {
+			background-color: darken(@assertive, 5%);
+		}
+	}
+	&.btn-dark {
+		background-color: @dark;
+		color: @light;
+		&:hover {
+			color: @light;
+			background-color: darken(@dark, 5%);
+		}
+	}
+}
+.btn-link {
+	@color: @calm;
+	color: @color;
+	.border-radius;
+	&:hover,&:focus {
+		color: darken(@color, 5%);
+		background-color: rgba(0, 0, 0, 0.05);
+		text-decoration: none;
+
+	}
+}
+
+.text-inverse {
+	color: @light
+}
+.text-muted {
+	color: @stable;
+}
+.text-primary {
+	color: @calm;
+}
+.text-success{
+	color: @balanced;
+}
+.text-info {
+	color: @royal;
+}
+.text-warning {
+	color: @energized;
+}
+.text-danger {
+	color: @assertive;
+}
+
+//Action Styles
+
+.is-hidden {
+	display: none;
+	opacity: 0;
+}
+.is-shown {
+	display: block;
+	opacity: 1
+}
+
+
+//Forms
+
+
+input {
+	&.form-control {
+		border: none;
+	}
+}
+textarea {
+	&.form-control {
+		border: none;
+	}
+}
+
+
+// Custom Styles
+
+.bg-candid {background-color: @candid;}
+
+body {
+	.bg-candid;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	::-webkit-scrollbar {
+	    width: .4em;
+	}
+	 
+	::-webkit-scrollbar-track {
+	    -webkit-box-shadow: inset 0 0 6px @light;
+	}
+	 
+	::-webkit-scrollbar-thumb {
+	  background-color: @stable;
+	  outline: none;
+	  .border-radius;
+	}
+}
+
+.options {
+	background-color: @light;
+	position: absolute;
+	z-index: 4;
+	overflow: hidden;
+	.border-radius;
+	.box-shadow-sm;
+	.brand{
+		font-size: 1.2em;
+		display: block;
+		padding: .4em 1em .5em .4em;
+		img {
+			width: 2em;
+			margin: 0 1em 0 0;
+		}
+	}
+	&.top-left {
+		top: 1em;
+		left: 4em;
+	}
+	&.top-right {
+		top: 1em;
+		right: 4em;
+	}
+	&.bottom-left {
+		bottom: 1em;
+		left: 4em;
+	}
+	&.bottom-right {
+		bottom: 1em;
+		right: 4em;
+	}
+}
+
+.full-screen { 
+	height: 100%; 
+	width: 100%;
+	visibility: visible;
+	vertical-align: middle;
+	
+	z-index: 1;
+	top: 0;
+	left: 0;
+	&.bg-city{
+		background-image: url("{3vot}/assets/images/bg-city-orchard.jpg");
+		background-size: cover;
+
+	}
+}
+
+
+.modal { 
+	height: 100%;
+	width: 100%;
+	max-width: 100%;
+	opacity: 1;
+	display: block;
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	padding: 0 0 0 0;
+	z-index: 3;
+	right: 0;
+	top: 0;
+	background-color: fade(@candid, 40%);
+	.transition();
+	// .translate(100%,0);
+	&.is-shown {
+		opacity: 1;
+		display: block;
+		pointer-events: auto;
+		// .translate(0%,0);
+		opacity: 1;
+	}
+	.panel{
+		background-color: @stable;
+		height: 96%;
+		min-width: 32em;
+		width: 30%;	
+		z-index: 2;	
+		.box-shadow-md;
+		.border-radius;
+		.panel-body {
+			padding: 1em 2em;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			height: 85%;
+			border: 4px solid @stable;
+		}
+		.panel-head {
+			color: @light;
+			font-size: 2em;
+			padding: 5% 1em 1%;
+			position: relative;
+			.box-shadow-sm;
+		}
+		&.panel-right{
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin: 1% 2% 1% 0;
+		}
+		&.panel-center{
+			position: relative;
+			margin: 1% auto 2%
+		}
+		&.panel-left{
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: 1% 2% 1% 0;
+		}
+		&.panel-primary {
+			.panel-head {
+				background-color: @calm;
+			}
+		}
+		&.panel-success {
+			.panel-head {
+				background-color: @balanced;
+			}
+		}
+		&.panel-dark {
+			.panel-head {
+				background-color: @dark;
+			}
+		}
+		&.panel-danger {
+			.panel-head {
+				background-color: @assertive;
+			}
+		}
+		&.panel-info {
+			.panel-head {
+				background-color: @royal;
+			}
+		}
+		&.panel-warning {
+			.panel-head {
+				background-color: @energized;
+			}
+		}
+	}
+	.close-panel {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		background-color: transparent;
+		border: none;
+		font-size: 10vh;
+		padding: 0 30% 0 0;
+		color: transparent;	
+		.transition();	
+		&:hover {
+			color: #fff;
+			text-shadow: 0 1px 2px rgba(0,0,0,.2);
+		}
+	}
+
+}
+
+.dialog-panel {
+	position: absolute;
+	background-color: @light;
+	z-index: 1;
+	opacity: 0;
+	text-align: center;
+	max-width: 12em;
+	.transition();
+	&.is-shown{
+		opacity: 1;
+		.translate(0,-25px);
+	}
+	.border-radius;
+	.box-shadow-sm;
+	.padding-sm;
+	// .dialog-body {
+		
+	// }
+	
+}
+
+.dialog-marker {
+	width: 25px;
+	height: 41px;
+	position: absolute;
+	display: inline-block;
+	z-index: 1;
+	opacity: 0;
+	background-image: url("{3vot}/assets/images/marker-icon.png");
+	&.is-shown {
+		opacity: 1;
+	}
+}
+
+.card {
+	display: block;
+	background-color: @light;
+	margin: 0 0 .2em;
+	overflow: hidden;
+	.padding-md;
+	label {
+		color: darken(@stable, 40%);
+		font-size: .8em;
+	}
+	p{
+		font-size: 1.2em;
+		margin: 0;
+	}
+	&.card-anim{
+		.transition;
+		opacity: 0;
+		&.card-anim-left{
+			.translate(-20px,0);
+			
+			&.is-shown{
+				opacity: 1;
+				.translate(0,0);
+			}
+		}
+		&.card-anim-right{
+			.translate(20px,0);
+			
+			&.is-shown{
+				opacity: 1;
+				.translate(0,0);
+			}
+		}
+		
+	}
+	&.card-icon {
+		padding: 1em 1em 1em 3em;
+	}
+	&.disabled {
+		background-color: darken(@stable, 5%);
+		margin: 0;
+	}
+	.card-detail {
+		.padding-md;
+		background-color: darken(@light, 10%);
+	}
+
+}
+
+
+.no-padding{
+	padding: 0;
+}
+
+.card.disabled:first-child{
+	border: 1px solid #000;
+}
+
+.leaflet-popup-content-wrapper, 
+.leaflet-popup-tip {
+	.box-shadow-sm;
+}
+.leaflet-popup-content-wrapper {
+	.border-radius;
+}
+.leaflet-popup-content {
+	margin: .5em;
+	text-align: center;
+	.title {
+		font-size: 1.4em;
+		font-weight: 400;
+		color: @light;
+		display: block;
+		.fa {
+			display: block;
+			color: @stable;
+			font-size: 1.2em;
+		}
+	}
+	.body {
+		color: darken(@stable, 15%);
+		margin: .8em 0 
+	}
+}
+.leaflet-container {
+	a.leaflet-popup-close-button{
+		z-index: 3;
+		background-color: @stable;
+		display: inline-block;
+		padding: .3em .4em .4em .3em;
+		width: 1.5em;
+		height: 1.5em;
+		.border-radius;
+	}
+}
+
+
